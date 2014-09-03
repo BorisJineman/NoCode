@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NoCode.Logic
+namespace NoCode
 {
-    public class Network
+    public enum ParameterState
     {
+        Forward,
+        Reverse,
     }
 }

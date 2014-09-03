@@ -1,6 +1,6 @@
 ﻿namespace NoCode
 {
-    partial class Form1
+    partial class DocumentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -54,14 +54,14 @@
             this.networkControl1.Size = new System.Drawing.Size(3220, 240);
             this.networkControl1.TabIndex = 0;
             // 
-            // Form1
+            // DocumentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 364);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "DocumentForm";
+            this.Text = "DocumentForm";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

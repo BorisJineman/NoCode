@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace NoCode
 {
-    public partial class MainForm : Form
+    public partial class BlockListTool : DockContent
     {
-        public MainForm()
+        public BlockListTool()
         {
             InitializeComponent();
         }

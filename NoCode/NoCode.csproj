@@ -42,23 +42,33 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\Third Party\dockpanelsuite\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\Block.cs" />
-    <Compile Include="Logic\Document.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="BlockListTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BlockListTool.Designer.cs">
+      <DependentUpon>BlockListTool.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\Network.cs" />
-    <Compile Include="Logic\Parameter.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Block.cs" />
+    <Compile Include="Current.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="DocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="DocumentForm.Designer.cs">
+      <DependentUpon>DocumentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network.cs" />
+    <Compile Include="Parameter.cs" />
+    <Compile Include="MDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent.Designer.cs">
+      <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
     <Compile Include="NetworkControl.cs">
       <SubType>UserControl</SubType>
@@ -66,19 +76,32 @@
     <Compile Include="NetworkControl.Designer.cs">
       <DependentUpon>NetworkControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\ParameterDataType.cs" />
-    <Compile Include="Logic\ParameterState.cs" />
-    <Compile Include="Logic\ParameterType.cs" />
+    <Compile Include="ParameterDataType.cs" />
+    <Compile Include="ParameterState.cs" />
+    <Compile Include="ParameterType.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectExplorerTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExplorerTool.Designer.cs">
+      <DependentUpon>ProjectExplorerTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="BlockListTool.resx">
+      <DependentUpon>BlockListTool.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="DocumentForm.resx">
+      <DependentUpon>DocumentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent.resx">
+      <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NetworkControl.resx">
       <DependentUpon>NetworkControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExplorerTool.resx">
+      <DependentUpon>ProjectExplorerTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,6 +111,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">

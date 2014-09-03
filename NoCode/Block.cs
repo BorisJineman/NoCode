@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace NoCode.Logic
+namespace NoCode
 {
     public class Block
     {

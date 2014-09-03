@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NoCode.Logic
+namespace NoCode
 {
-    public class Document
+    public enum ParameterType
     {
+        Input,
+        Output,
     }
-
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NoCode.Logic
+namespace NoCode
 {
     public enum ParameterDataType
     {
