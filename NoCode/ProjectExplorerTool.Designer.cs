@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Project");
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // treeView1
@@ -60,5 +61,6 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

@@ -114,7 +114,15 @@ namespace NoCode
 
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Current.ProjectExplorerTool.
+            if (Current.Project != null
+                &&MessageBox.Show("Close current project?","Info",MessageBoxButtons.YesNo)==DialogResult.No)
+            {
+                return;
+            }
+
+            Project proj=new Project();
+
+            
         }
     }
 }

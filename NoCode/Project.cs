@@ -7,26 +7,24 @@ namespace NoCode
 {
     public class Project
     {
+        private string name;
         public string Name
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return name; }
+            set { name = value; }
         }
 
+        private List<string> documentFileList = new List<string>();
         public List<String> DocumentFileList
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return documentFileList; }
+        }
+
+        private string currentFile;
+        public string CurrentFile
+        {
+            get { return currentFile; }
+            set { currentFile = value; }
         }
     }
 }

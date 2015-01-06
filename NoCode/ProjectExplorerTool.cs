@@ -21,13 +21,52 @@ namespace NoCode
             InitializeComponent();
         }
 
-        public void LoadProject(string filename)
+        public void LoadProjectFromFile(string filename)
         {
             BinaryFormatter formatter=new BinaryFormatter();
             using (FileStream fs = new FileStream(filename,FileMode.Open))
             {
-                Current.Project = (Project)formatter.Deserialize(fs);
+                Project proj = (Project)formatter.Deserialize(fs);
+                this.LoadProject(proj);
             }
+        }
+
+        public void LoadProject(Project proj)
+        {
+            Current.Project = proj;
+            TreeNode projNode = this.treeView1.Nodes["ProjectNode"];
+            projNode.Text = "Project - " + proj.Name;
+
+            foreach (string str in proj.DocumentFileList)
+            {
+                projNode.Nodes.Add(str, str);
+            }
+        }
+
+        public void SaveProjectToFile(string filename)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            {
+                formatter.Serialize(fs, Current.Project);
+            }
+        }
+
+        public void SaveProjectToFile()
+        {
+            if (Current.Project.CurrentFile == null)
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Current.Project.CurrentFile = saveFileDialog1.FileName;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            SaveProjectToFile(Current.Project.CurrentFile);
         }
     }
 }
