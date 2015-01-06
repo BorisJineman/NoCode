@@ -13,6 +13,7 @@ namespace NoCode
 {
     public partial class DocumentForm : DockContent
     {
+        private Document doc=new Document();
         public DocumentForm()
         {
             InitializeComponent();

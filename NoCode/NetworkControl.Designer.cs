@@ -40,6 +40,9 @@
             this.Size = new System.Drawing.Size(597, 327);
             this.Load += new System.EventHandler(this.NetworkControl_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NetworkControl_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NetworkControl_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NetworkControl_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NetworkControl_MouseUp);
             this.ResumeLayout(false);
 
         }
