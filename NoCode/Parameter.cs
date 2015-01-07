@@ -14,6 +14,8 @@ namespace NoCode
         private ParameterType type;
         private ParameterDataType dataType;
         private string dataValue = "";
+        private Parameter lineTo = null;
+        private Block parent;
 
         public ParameterState State
         {
@@ -43,6 +45,25 @@ namespace NoCode
         {
             get { return dataValue; }
             set { dataValue = value; }
+        }
+
+        public Parameter LineTo
+        {
+            get { return lineTo; }
+            set
+            {
+                lineTo = value;
+                if (lineTo != null)
+                {
+                    dataValue = "";
+                }
+            }
+        }
+
+        public Block Parent
+        {
+            get { return parent; }
+            set { parent = value; }
         }
 
         public Image Paint()

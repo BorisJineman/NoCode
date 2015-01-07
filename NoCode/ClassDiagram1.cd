@@ -3,9 +3,16 @@
   <Class Name="NoCode.Project">
     <Position X="1.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAABgAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAY=</HashCode>
       <FileName>Project.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Enum Name="NoCode.HitCheckEnum">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAAEBAAA=</HashCode>
+      <FileName>HitCheckEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Tahoma" Size="8.25" />
 </ClassDiagram>
