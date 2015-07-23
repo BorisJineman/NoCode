@@ -37,9 +37,9 @@ namespace NoCode
             TreeNode projNode = this.treeView1.Nodes["ProjectNode"];
             projNode.Text = "Project - " + proj.Name;
 
-            foreach (string str in proj.DocumentFileList)
+            foreach (Document logic in proj.Documents)
             {
-                projNode.Nodes.Add(str, str);
+                projNode.Nodes.Add("LogicNode", logic.Name).Tag = logic;
             }
         }
 
@@ -67,6 +67,14 @@ namespace NoCode
             }
 
             SaveProjectToFile(Current.Project.CurrentFile);
+        }
+
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Name == "LogicNode")
+            {
+                Current.MainForm.OpenDocument(e.Node.Tag as Document);
+            }
         }
     }
 }

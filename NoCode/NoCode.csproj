@@ -53,34 +53,36 @@
     <Compile Include="BlockListTool.Designer.cs">
       <DependentUpon>BlockListTool.cs</DependentUpon>
     </Compile>
-    <Compile Include="Block.cs" />
     <Compile Include="Current.cs" />
-    <Compile Include="Document.cs" />
     <Compile Include="DocumentForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DocumentForm.Designer.cs">
       <DependentUpon>DocumentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HitCheckEnum.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="Network.cs" />
-    <Compile Include="Parameter.cs" />
+    <Compile Include="FBDCore\DataTypeEnum.cs" />
+    <Compile Include="FBDCore\EditNetworkLabelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FBDCore\FBD.cs" />
+    <Compile Include="FBDCore\FBDHitTestResultEnum.cs" />
+    <Compile Include="FBDCore\FBDNetwork.cs" />
+    <Compile Include="FBDCore\FBDNetworkControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FBDCore\FBDNetworkOperationState.cs" />
+    <Compile Include="FBDCore\FBDPara.cs" />
+    <Compile Include="FBDCore\FBDParaPinState.cs" />
+    <Compile Include="FBDCore\FBDParaSelectedState.cs" />
+    <Compile Include="FBDCore\FBDParaTypeEnum.cs" />
+    <Compile Include="FBDCore\TreeGroupItem.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="MDIParent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="NetworkControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NetworkControl.Designer.cs">
-      <DependentUpon>NetworkControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ParameterDataType.cs" />
-    <Compile Include="ParameterState.cs" />
-    <Compile Include="ParameterType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectExplorerTool.cs">
@@ -95,12 +97,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentForm.resx">
       <DependentUpon>DocumentForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NetworkControl.resx">
-      <DependentUpon>NetworkControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExplorerTool.resx">
       <DependentUpon>ProjectExplorerTool.cs</DependentUpon>

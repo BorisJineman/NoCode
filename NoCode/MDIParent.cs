@@ -13,25 +13,33 @@ namespace NoCode
 {
     public partial class MDIParent : Form
     {
+       
         private int childFormNumber = 0;
 
         private BlockListTool blockListTool;
 
         public MDIParent()
         {
+            Current.MainForm = this;
+
             InitializeComponent();
             blockListTool=new BlockListTool();
             Current.ProjectExplorerTool = new ProjectExplorerTool();
 
             blockListTool.Show(dockPanel,DockState.DockLeft);
             Current.ProjectExplorerTool.Show(blockListTool.Pane, DockAlignment.Top, 0.5);
+
         }
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            DocumentForm childForm = new DocumentForm();
+           OpenDocument(new Document("Document " + childFormNumber++));
+        }
+
+        public void OpenDocument(Document doc)
+        {
+            DocumentForm childForm = new DocumentForm(doc);
             childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
             childForm.Show(this.dockPanel);
         }
 
@@ -119,10 +127,12 @@ namespace NoCode
             {
                 return;
             }
+            Current.Project = new Project();
+        }
 
-            Project proj=new Project();
-
-            
+        private void MDIParent_Load(object sender, EventArgs e)
+        {
+            Current.ProjectExplorerTool.LoadProject(new Project());
         }
     }
 }

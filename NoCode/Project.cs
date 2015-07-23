@@ -5,26 +5,36 @@ using System.Text;
 
 namespace NoCode
 {
+    [Serializable]
     public class Project
     {
-        private string name;
-        public string Name
+        public Project()
         {
-            get { return name; }
-            set { name = value; }
+            documents.Add(new Document("main"));
         }
 
-        private List<string> documentFileList = new List<string>();
-        public List<String> DocumentFileList
-        {
-            get { return documentFileList; }
-        }
-
+        [NonSerialized]
         private string currentFile;
         public string CurrentFile
         {
             get { return currentFile; }
             set { currentFile = value; }
         }
+
+        private string name="New Project";
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        
+        private List<Document> documents = new List<Document>();
+
+        public List<Document> Documents
+        {
+            get { return documents; }
+            set { documents = value; }
+        }
+
     }
 }
