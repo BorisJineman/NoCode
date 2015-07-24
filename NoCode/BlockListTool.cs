@@ -24,6 +24,8 @@ namespace NoCode
         private void BlockListTool_Load(object sender, EventArgs e)
         {
             InitFBDs();
+
+            this.treeView1.ExpandAll();
         }
 
         private void InitFBDs()

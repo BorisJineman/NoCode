@@ -68,7 +68,7 @@ namespace NoCode.FBDCore
 			this.button1.Name = "button1";
 			this.button1.Size = new Size(75, 23);
 			this.button1.TabIndex = 1;
-			this.button1.Text = "确定";
+			this.button1.Text = "OK";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new EventHandler(this.button1_Click);
 			this.button2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
@@ -77,7 +77,7 @@ namespace NoCode.FBDCore
 			this.button2.Name = "button2";
 			this.button2.Size = new Size(75, 23);
 			this.button2.TabIndex = 2;
-			this.button2.Text = "取消";
+			this.button2.Text = "Cancel";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new EventHandler(this.button2_Click);
 			this.label1.AutoSize = true;
@@ -85,7 +85,7 @@ namespace NoCode.FBDCore
 			this.label1.Name = "label1";
 			this.label1.Size = new Size(59, 12);
 			this.label1.TabIndex = 1;
-			this.label1.Text = "注释内容:";
+            this.label1.Text = "Comment:";
 			this.textBox1.Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
 			this.textBox1.Location = new Point(12, 35);
 			this.textBox1.Name = "textBox1";
@@ -100,11 +100,10 @@ namespace NoCode.FBDCore
 			base.Controls.Add(this.label1);
 			base.Controls.Add(this.button2);
 			base.Controls.Add(this.button1);
-			this.Font = new Font("宋体", 9f, FontStyle.Regular, GraphicsUnit.Point, 134);
 			base.FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			base.Name = "EditNetworkLabelForm";
 			base.StartPosition = FormStartPosition.CenterParent;
-			this.Text = "网络注释";
+            this.Text = "Network Comment";
 			base.Load += new EventHandler(this.EditNetworkLabelForm_Load);
 			base.ResumeLayout(false);
 			base.PerformLayout();

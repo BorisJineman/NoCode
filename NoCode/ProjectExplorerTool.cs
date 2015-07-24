@@ -21,6 +21,18 @@ namespace NoCode
             InitializeComponent();
         }
 
+        public Document AddDocument(Document doc)
+        {
+            Current.Project.Documents.Add(doc);
+
+            TreeNode projNode = this.treeView1.Nodes["ProjectNode"];
+
+            projNode.Nodes.Add("DocumentNode", doc.Name).Tag = doc;
+
+            return doc;
+
+        }
+
         public void LoadProjectFromFile(string filename)
         {
             BinaryFormatter formatter=new BinaryFormatter();
@@ -33,14 +45,29 @@ namespace NoCode
 
         public void LoadProject(Project proj)
         {
+            Current.MainForm.CloseAllChildForms();
+
             Current.Project = proj;
+            
             TreeNode projNode = this.treeView1.Nodes["ProjectNode"];
+
+            projNode.Nodes.Clear();
+
             projNode.Text = "Project - " + proj.Name;
 
-            foreach (Document logic in proj.Documents)
+            foreach (Document doc in proj.Documents)
             {
-                projNode.Nodes.Add("LogicNode", logic.Name).Tag = logic;
+                projNode.Nodes.Add("DocumentNode", doc.Name).Tag = doc;
+
+                if (doc.Name == "main")
+                {
+                    Current.MainForm.OpenDocument(doc);
+                }
             }
+
+            
+
+            this.treeView1.ExpandAll();
         }
 
         public void SaveProjectToFile(string filename)
@@ -71,7 +98,7 @@ namespace NoCode
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Name == "LogicNode")
+            if (e.Node.Name == "DocumentNode")
             {
                 Current.MainForm.OpenDocument(e.Node.Tag as Document);
             }

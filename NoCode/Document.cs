@@ -7,10 +7,13 @@ using NoCode.FBDCore;
 
 namespace NoCode
 {
+    [Serializable]
     public class Document
     {
         public Document()
         {
+            this.networks.Add(new FBDNetwork());
+            this.networks.Add(new FBDNetwork());
             this.networks.Add(new FBDNetwork());
         }
 

@@ -17,7 +17,7 @@ namespace NoCode
         private int childFormNumber = 0;
 
         private BlockListTool blockListTool;
-
+        
         public MDIParent()
         {
             Current.MainForm = this;
@@ -33,11 +33,20 @@ namespace NoCode
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-           OpenDocument(new Document("Document " + childFormNumber++));
+            var doc=Current.ProjectExplorerTool.AddDocument(new Document("Logic" + childFormNumber++));
+            OpenDocument(doc);
         }
 
         public void OpenDocument(Document doc)
         {
+            foreach (var form in this.MdiChildren)
+            {
+                if (form.Tag == doc)
+                {
+                    this.ActivateMdiChild(form);
+                    return;
+                }
+            }
             DocumentForm childForm = new DocumentForm(doc);
             childForm.MdiParent = this;
             childForm.Show(this.dockPanel);
@@ -47,10 +56,11 @@ namespace NoCode
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog.Filter = "Project Files (*.lpp)|*.lpp|All Files (*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                string FileName = openFileDialog.FileName;
+                string fileName = openFileDialog.FileName;
+                Current.ProjectExplorerTool.LoadProjectFromFile(fileName);
             }
         }
 
@@ -58,10 +68,11 @@ namespace NoCode
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            saveFileDialog.Filter = "Project Files (*.lpp)|*.lpp|All Files (*.*)|*.*";
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                string FileName = saveFileDialog.FileName;
+                string fileName = saveFileDialog.FileName;
+                Current.ProjectExplorerTool.SaveProjectToFile(fileName);
             }
         }
 
@@ -91,28 +102,14 @@ namespace NoCode
         {
             statusStrip.Visible = statusBarToolStripMenuItem.Checked;
         }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
+        
 
         private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+        }
+
+        public void CloseAllChildForms()
         {
             foreach (Form childForm in MdiChildren)
             {
@@ -127,12 +124,89 @@ namespace NoCode
             {
                 return;
             }
-            Current.Project = new Project();
+            Current.ProjectExplorerTool.LoadProject(new Project());
         }
 
         private void MDIParent_Load(object sender, EventArgs e)
         {
             Current.ProjectExplorerTool.LoadProject(new Project());
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Current.ProjectExplorerTool.SaveProjectToFile();
+        }
+
+        private void Compile_Click(object sender, EventArgs e)
+        {
+            foreach (var doc in Current.Project.Documents)
+            {
+                foreach (var network in doc.Networks)
+                {
+                    network.Check();
+                    network.Compile();
+                }
+            }
+
+            foreach (var form in this.MdiChildren)
+            {
+                form.Refresh();
+            }
+        }
+
+        private void AddNetwork_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null &&
+                this.ActiveMdiChild is DocumentForm)
+            {
+                DocumentForm form = this.ActiveMdiChild as DocumentForm;
+
+                form.AddNetwork();
+            }
+        }
+
+        private void DeleteNetwork_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null &&
+               this.ActiveMdiChild is DocumentForm)
+            {
+                DocumentForm form = this.ActiveMdiChild as DocumentForm;
+
+                form.DeleteNetwork();
+            }
+        }
+
+        private void AddParaButton_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null &&
+              this.ActiveMdiChild is DocumentForm)
+            {
+                DocumentForm form = this.ActiveMdiChild as DocumentForm;
+
+                form.AddPinPara();
+            }
+        }
+
+        private void RemoveParaButton_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null &&
+              this.ActiveMdiChild is DocumentForm)
+            {
+                DocumentForm form = this.ActiveMdiChild as DocumentForm;
+
+                form.RemovePinPara();
+            }
+        }
+
+        private void ReverseButton_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null &&
+              this.ActiveMdiChild is DocumentForm)
+            {
+                DocumentForm form = this.ActiveMdiChild as DocumentForm;
+
+                form.ReversePinPara();
+            }
         }
     }
 }
